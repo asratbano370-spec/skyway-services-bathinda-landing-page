@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skyway Services Bathinda - Air Tickets & International Courier</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            skyBlue: '#0284C7',
+            navyBlue: '#0F172A',
+            accentOrange: '#F97316'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- Top bar -->
+  <div class="bg-navyBlue text-white text-xs py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-1 md:space-y-0">
+      <div>📍 Ajit Road, Oppo. Street No. 14, Bathinda, Punjab</div>
+      <div class="flex space-x-4 font-semibold">
+        <span>✈️ Air Tickets: <a href="tel:9464403600" class="text-skyBlue">94644-03600</a></span>
+        <span>📦 Courier: <a href="tel:9517802999" class="text-skyBlue">95178-02999</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 bg-white shadow-md z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-plane-departure text-3xl text-skyBlue"></i>
+        <div>
+          <span class="text-2xl font-black text-navyBlue tracking-wider">SKYWAY</span>
+          <span class="block text-xs font-bold text-skyBlue tracking-widest -mt-1">SERVICES BATHINDA</span>
+        </div>
+      </div>
+      <nav class="hidden md:flex space-x-6 font-semibold">
+        <a href="#home" class="hover:text-skyBlue">Home</a>
+        <a href="#services" class="hover:text-skyBlue">Services</a>
+        <a href="#rates" class="hover:text-skyBlue">Rates</a>
+        <a href="#tracking" class="hover:text-skyBlue">Live Tracking</a>
+        <a href="#contact" class="hover:text-skyBlue">Contact Us</a>
+      </nav>
+      <div class="flex space-x-2">
+        <a href="tel:9464403600" class="bg-skyBlue hover:bg-sky-700 text-white font-bold px-4 py-2 rounded-lg text-sm shadow">Book Ticket</a>
+        <a href="tel:9517802999" class="bg-navyBlue hover:bg-slate-800 text-white font-bold px-4 py-2 rounded-lg text-sm shadow">Send Parcel</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Dual Search Tabs -->
+  <section id="home" class="bg-gradient-to-r from-navyBlue via-sky-900 to-slate-900 text-white py-16 px-4">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+      <div>
+        <span class="bg-accentOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Fast & Trusted Deals</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mt-4 leading-tight">Fly Worldwide or Send Packages Globally</h1>
+        <p class="text-gray-300 mt-4">Best rates on flight tickets & international courier shipping to Canada, UK, Australia, USA, Cyprus & Germany.</p>
+        <div class="mt-6 flex space-x-3">
+          <span class="bg-white/10 px-3 py-1 rounded text-sm">🇨🇦 Canada</span>
+          <span class="bg-white/10 px-3 py-1 rounded text-sm">🇬🇧 UK</span>
+          <span class="bg-white/10 px-3 py-1 rounded text-sm">🇦🇺 Australia</span>
+          <span class="bg-white/10 px-3 py-1 rounded text-sm">🇩🇪 Germany</span>
+        </div>
+      </div>
+
+      <!-- Tab Box -->
+      <div class="bg-white text-slate-800 p-6 rounded-xl shadow-2xl">
+        <div class="flex border-b mb-4">
+          <button id="tabFlightBtn" onclick="switchTab('flight')" class="flex-1 py-2 font-bold text-center border-b-2 border-skyBlue text-skyBlue">✈️ Flight Search</button>
+          <button id="tabCourierBtn" onclick="switchTab('courier')" class="flex-1 py-2 font-bold text-center text-gray-500">📦 Courier Calculator</button>
+        </div>
+
+        <!-- Flight Form -->
+        <form id="flightForm" onsubmit="handleAction(event, 'Flight Booking Query Sent!')" class="space-y-4">
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" placeholder="From (e.g. Delhi)" required class="border p-2 rounded">
+            <input type="text" placeholder="To (e.g. Toronto)" required class="border p-2 rounded">
+          </div>
+          <input type="date" required class="w-full border p-2 rounded">
+          <input type="tel" placeholder="Your Phone Number" required class="w-full border p-2 rounded">
+          <button type="submit" class="w-full bg-skyBlue hover:bg-sky-700 text-white font-bold py-3 rounded">Get Lowest Fare Quote</button>
+        </form>
+
+        <!-- Courier Form -->
+        <form id="courierForm" onsubmit="handleAction(event, 'Courier Rate Query Sent!')" class="space-y-4 hidden">
+          <select class="w-full border p-2 rounded" required>
+            <option>Select Country</option>
+            <option>Canada 🇨🇦</option>
+            <option>Cyprus 🇨🇾</option>
+            <option>UK 🇬🇧</option>
+            <option>Australia 🇦🇺</option>
+            <option>Germany 🇩🇪</option>
+          </select>
+          <input type="number" placeholder="Approx Weight in KG" required class="w-full border p-2 rounded">
+          <input type="tel" placeholder="Your Mobile Number" required class="w-full border p-2 rounded">
+          <button type="submit" class="w-full bg-navyBlue hover:bg-slate-800 text-white font-bold py-3 rounded">Calculate Courier Price</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Courier Tracking Section -->
+  <section id="tracking" class="py-12 bg-sky-50 px-4">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-2xl font-bold text-navyBlue">Track Your International Parcel</h3>
+      <p class="text-gray-600 text-sm mt-1">Enter your AWB / Tracking ID below for live parcel tracking update.</p>
+      <form onsubmit="trackParcel(event)" class="mt-4 flex">
+        <input type="text" id="trackId" placeholder="Enter Tracking Number (e.g. SKW12345)" required class="flex-1 p-3 border border-r-0 rounded-l-lg focus:outline-none">
+        <button type="submit" class="bg-accentOrange hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-r-lg">Track Now</button>
+      </form>
+      <div id="trackResult" class="mt-4 text-left hidden p-4 bg-white rounded shadow border"></div>
+    </div>
+  </section>
+
+  <!-- Core Services -->
+  <section id="services" class="py-16 max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-navyBlue mb-10">Our Specialized Services</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white p-6 rounded-xl border shadow-md flex flex-col justify-between">
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fa-solid fa-plane text-3xl text-skyBlue"></i>
+            <h3 class="text-2xl font-bold">Air Ticketing</h3>
+          </div>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li>✅ Cheap Direct & One-Stop International Flights</li>
+            <li>✅ Special Student Luggage Allowance Deals</li>
+            <li>✅ Visa-Friendly Booking Confirmation</li>
+          </ul>
+        </div>
+        <a href="tel:9464403600" class="mt-6 block text-center bg-skyBlue text-white font-bold py-3 rounded-lg">Call Air Ticket Helpline: 94644-03600</a>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl border shadow-md flex flex-col justify-between">
+        <div>
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fa-solid fa-box text-3xl text-navyBlue"></i>
+            <h3 class="text-2xl font-bold">International Courier & Cargo</h3>
+          </div>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li>✅ Express Door-to-Door Delivery Worldwide</li>
+            <li>✅ Food Items, Sweets, Clothes & Documents Shipping</li>
+            <li>✅ Complete Packing Support at Office</li>
+          </ul>
+        </div>
+        <a href="tel:9517802999" class="mt-6 block text-center bg-navyBlue text-white font-bold py-3 rounded-lg">Call Courier Helpline: 95178-02999</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Location -->
+  <section id="contact" class="py-16 bg-white px-4 border-t">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+      <div>
+        <h2 class="text-3xl font-bold text-navyBlue">Skyway Services Bathinda</h2>
+        <p class="text-gray-600 mt-2">Visit our main branch in Bathinda or call us directly.</p>
+        <div class="mt-6 space-y-4">
+          <p><strong>📍 Address:</strong> Ajit Road, Oppo. Street No. 14, Bathinda, Punjab</p>
+          <p><strong>✈️ Air Tickets:</strong> +91 94644-03600</p>
+          <p><strong>📦 Courier Service:</strong> +91 95178-02999</p>
+        </div>
+      </div>
+      <div class="bg-gray-50 p-6 rounded-xl border">
+        <h3 class="text-xl font-bold mb-4">Quick Inquiry</h3>
+        <form onsubmit="handleAction(event, 'Message sent successfully!')" class="space-y-3">
+          <input type="text" placeholder="Name" required class="w-full p-3 border rounded">
+          <input type="tel" placeholder="Phone" required class="w-full p-3 border rounded">
+          <select class="w-full p-3 border rounded">
+            <option>Air Ticket Inquiry</option>
+            <option>Courier Package Inquiry</option>
+          </select>
+          <textarea placeholder="Details" rows="3" class="w-full p-3 border rounded"></textarea>
+          <button type="submit" class="w-full bg-accentOrange text-white font-bold py-3 rounded">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navyBlue text-white py-6 text-center text-sm">
+    <p>&copy; 2026 Skyway Services Bathinda. Air Tickets & International Courier Services.</p>
+  </footer>
+
+  <script>
+    function switchTab(tab) {
+      if(tab === 'flight') {
+        document.getElementById('flightForm').classList.remove('hidden');
+        document.getElementById('courierForm').classList.add('hidden');
+        document.getElementById('tabFlightBtn').className = 'flex-1 py-2 font-bold text-center border-b-2 border-skyBlue text-skyBlue';
+        document.getElementById('tabCourierBtn').className = 'flex-1 py-2 font-bold text-center text-gray-500';
+      } else {
+        document.getElementById('courierForm').classList.remove('hidden');
+        document.getElementById('flightForm').classList.add('hidden');
+        document.getElementById('tabCourierBtn').className = 'flex-1 py-2 font-bold text-center border-b-2 border-navyBlue text-navyBlue';
+        document.getElementById('tabFlightBtn').className = 'flex-1 py-2 font-bold text-center text-gray-500';
+      }
+    }
+    function handleAction(e, msg) {
+      e.preventDefault();
+      alert(msg);
+    }
+    function trackParcel(e) {
+      e.preventDefault();
+      const id = document.getElementById('trackId').value;
+      const res = document.getElementById('trackResult');
+      res.classList.remove('hidden');
+      res.innerHTML = `<p class="text-sm font-bold text-green-700">Status for Tracking ID: ${id}</p><p class="text-xs text-gray-600 mt-1">Package in transit via Express Overseas Cargo. Estimated delivery: 3-5 business days.</p>`;
+    }
+  </script>
+</body>
+</html>
